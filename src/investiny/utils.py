@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Literal, Tuple, Union
 from uuid import uuid4
 
-import scraper
+import cloudscraper
 
 from investiny.config import Config
 
