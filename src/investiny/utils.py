@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Literal, Tuple, Union
 from uuid import uuid4
 
-import httpx
+import scraper
 
 from investiny.config import Config
 
@@ -31,7 +31,14 @@ def request_to_investing(
         "Referer": "https://tvc-invdn-com.investing.com/",
         "Content-Type": "application/json",
     }
-    r = httpx.get(url, params=params, headers=headers)
+    scraper = cloudscraper.create_scraper(
+        browser={
+            'browser': 'chrome',
+            'platform': 'android',
+            'desktop': False
+        }
+    )    
+    r = scraper.get(url, params=params, headers=headers)
     if r.status_code != 200:
         raise ConnectionError(
             f"Request to Investing.com API failed with error code: {r.status_code}."
