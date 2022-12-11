@@ -33,9 +33,7 @@ def request_to_investing(
     }
     scraper = cloudscraper.create_scraper(
         browser={
-            'browser': 'chrome',
-            'platform': 'android',
-            'desktop': False
+            'custom': 'ScraperBot/1.0',
         }
     )    
     r = scraper.get(url, params=params, headers=headers)
