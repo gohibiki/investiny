@@ -31,13 +31,11 @@ def request_to_investing(
         "Referer": "https://tvc-invdn-com.investing.com/",
         "Content-Type": "application/json",
     }
-    scraper = cloudscraper.create_scraper(
-        browser={
-            'browser': 'chrome',
-            'platform': 'android',
-            'desktop': False
-        }
-    ,delay=10)
+scraper = cloudscraper.create_scraper(
+    browser={
+        'custom': 'ScraperBot/1.0',
+    }
+)
     r = scraper.get(url, params=params, headers=headers)
     if r.status_code != 200:
         raise ConnectionError(
